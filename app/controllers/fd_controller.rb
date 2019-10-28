@@ -1,4 +1,5 @@
 class FdController < ApplicationController
-  def recieve_fd
+  def recieve
+    render status: 200, json: ""
   end
 end
