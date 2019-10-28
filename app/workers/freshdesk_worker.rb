@@ -10,7 +10,7 @@ class FreshdeskWorker
       page = 1
 
       count = 0
-      api_path = "api/v2/search/tickets/?page=#{page}&query=%22tag%3A'"+tag+"'%22"
+      api_path = "api/v2/search/tickets/?page=#{page}&query=%22tag:%27feed%27%20AND%20status:2%22"
 
       tickets = getTickets(api_path)
       count = count + tickets["results"].count
@@ -18,7 +18,7 @@ class FreshdeskWorker
       if tickets["total"] > 1
         2.upto(tickets["total"]).each do |page|
           page = page + 1
-          api_path = "api/v2/search/tickets/?page=#{page}&query=%22tag%3A'"+tag+"'%22"
+          api_path = "api/v2/search/tickets/?page=#{page}&query=%22tag:%27feed%27%20AND%20status:2%22"
           tickets = getTickets(api_path)
           count = count + tickets["results"].count
         end
