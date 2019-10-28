@@ -1,0 +1,4 @@
+freshdesk_job:
+  cron: "0 * * * *"
+  class: "FreshdeskWorker"
+  queue: freshdesk
