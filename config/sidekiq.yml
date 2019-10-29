@@ -3,4 +3,5 @@
 :pidfile: tmp/pids/sidekiq.pid
 :queues:
   - [slack, 1]
+  - [upwork, 1]
   - [default, 2]
