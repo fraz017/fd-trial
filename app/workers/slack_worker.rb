@@ -7,7 +7,7 @@ class SlackWorker
 
   def perform(hook_url)
     tags = ["team", "takedown", "premium", "account", "crash", "battery", "feed", "playback", "subscription", "download", "playlist",
-      "search", "web", "ios", "localization", "content", "ui", "feature-request","unclassified", "spam", "feature-request"].freeze
+      "search", "web", "ios", "localization", "content", "ui", "feature-request","unclassified", "spam", "feature-request", "user-premium"].freeze
     
     url_hash = Hash.new
     tickets_count_hash = Hash.new
@@ -33,9 +33,6 @@ class SlackWorker
         ticket["tags"].each do |tag|
           if tickets_count_hash.has_key?(tag)
             tickets_count_hash[tag] += 1
-          else
-            tickets_count_hash[tag] = 1
-            url_hash[tag] = "https://playerassist.freshdesk.com/a/tickets/filters/search?orderBy=created_at&orderType=desc&q[]=created%3A%22last_month%22&q[]=status%3A%5B2%5D&q[]=tags%3A%5B%22#{tag}%22%5D&ref=all_tickets"
           end  
         end
       end
@@ -55,9 +52,6 @@ class SlackWorker
             ticket["tags"].each do |tag|
               if tickets_count_hash.has_key?(tag)
                 tickets_count_hash[tag] += 1
-                url_hash[tag] = "https://playerassist.freshdesk.com/a/tickets/filters/search?orderBy=created_at&orderType=desc&q[]=created%3A%22last_month%22&q[]=status%3A%5B2%5D&q[]=tags%3A%5B%22#{tag}%22%5D&ref=all_tickets"
-              else
-                tickets_count_hash[tag] = 1
               end  
             end
           end
