@@ -6,12 +6,15 @@ class UpworkWorker
   sidekiq_options retry: false, queue: 'upwork'
 
   def perform(hook_url, title, message, action)
+    payload = Hash.new
+    payload["replace_original"] = true
     if action == "suspend"
-      payload = UpworkService.new(title, message).suspend
+      payload["text"] = UpworkService.new(title, message).suspend
     else
-      payload = UpworkService.new(title, message).resume
+      payload["text"] = UpworkService.new(title, message).resume
     end
-    send_response(payload, hook_url)
+    puts payload.inspect
+    # send_response(payload, hook_url)
   end
 
   def send_response(payload, hook_url)
