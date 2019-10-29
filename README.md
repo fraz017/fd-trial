@@ -9,6 +9,7 @@ To run the background jobs **sidekiq** is used.
 # Key Notes
 * Slack command triggers our action `recieve` defined in `controllers/fd_controller.rb`
 * Upon recieving the request from slack our asynchronus task handles the freshdesk processing and responds with the data accordingly. Worker can be found at `app/workers/slack_wroker.rb`
+* All the tags are defined in the form of an array in `app/workers/slack_worker.rb`. You can add or remove tags there and all the urls and counts will be adjusted automatically
 * All credentials are being handled in the environemnt variables. Create a file `local_env.yml` in config
 * Set the following variables
   * USERNAME: 'XXXXXX' (set your frashdesk username)
