@@ -14,4 +14,4 @@ To run the background jobs **sidekiq** is used.
 * Set the following variables
   * USERNAME: 'XXXXXX' (set your frashdesk username)
   * PASSWORD: 'XXXXXX' (set your freshdesk password)
-  * FD_DOMAIN: 'XXXXX' (set your freshdesk domain e.g `xxxx.freshdesk.com`)
+  * FD_DOMAIN: 'XXXXX' (set your freshdesk domain e.g `https://xxxx.freshdesk.com`)
